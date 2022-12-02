@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { loadMicroApp, registerMicroApps, start } from 'qiankun';
 import { BrowserRouter, Link } from 'react-router-dom';
+import Navi from './components/Navi';
+import styled from 'styled-components';
 
 export const App = () => {
 
@@ -24,10 +26,16 @@ export const App = () => {
     }, [])
 
     return <BrowserRouter>
-        <h1>Main App</h1>
-        <Link to='/'>Home</Link>
-        <Link to='/todo-app'>Todo App</Link>
-        <Link to='/onboard-app'>Onboard App</Link>
-        <div id="container"></div>
+        {/* <Link to='/'>Home</Link> */}
+        {/* <Link to='/todo-app'>Todo App</Link>
+        <Link to='/onboard-app'>Onboard App</Link> */}
+        <Navi></Navi>
+        <Main id="container"></Main>
     </BrowserRouter>
 }
+
+const Main = styled.div`
+    width: calc(100vw - 200px);
+    display: inline-block;
+    height: 100vh;
+`
