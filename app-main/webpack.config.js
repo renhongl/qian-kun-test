@@ -14,6 +14,7 @@ module.exports = {
         historyApiFallback: true,
         hot: false
     },
+    devtool: 'source-map',
     module: {
         rules: [
             {

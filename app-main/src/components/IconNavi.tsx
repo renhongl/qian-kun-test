@@ -1,15 +1,14 @@
 
-import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Typography from '@mui/material/Typography';
 import React from 'react';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 
 export default function IconMenu() {
     const location = useLocation();
@@ -17,10 +16,17 @@ export default function IconMenu() {
         <Paper sx={{ width: 60, maxWidth: '100%' }}>
             <Logo>LOGO</Logo>
             <MenuList>
+                <NewMenuItem selected={['/', '/about', '/settings'].includes(location.pathname)}>
+                    <Link to='/'>
+                        <NewListItemIcon>
+                            <HomeIcon fontSize="small" />
+                        </NewListItemIcon>
+                    </Link>
+                </NewMenuItem>
                 <NewMenuItem selected={location.pathname.startsWith('/todo-app')}>
                     <Link to='/todo-app'>
                         <NewListItemIcon>
-                            <HomeIcon fontSize="small" />
+                            <PlaylistAddCheckIcon fontSize="small" />
                         </NewListItemIcon>
                     </Link>
                 </NewMenuItem>
