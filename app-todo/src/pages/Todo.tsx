@@ -5,11 +5,11 @@ import { useTodo } from '../services/todo';
 
 export default function Todo() {
 
-    const { state, addTodo, deleteTodo } = useTodo();
+    const { state, addTodo, deleteTodo, toggleTodo } = useTodo();
 
     return (
         <div>
-            <TodoList data={state} deleteTodo={deleteTodo}></TodoList>
+            <TodoList data={state} deleteTodo={deleteTodo} toggleTodo={toggleTodo}></TodoList>
             <AddTodo addTodo={addTodo}></AddTodo>
         </div>
     )

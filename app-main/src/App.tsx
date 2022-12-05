@@ -1,17 +1,22 @@
 import React, { useEffect } from 'react';
 import { loadMicroApp, registerMicroApps, start } from 'qiankun';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter, Link, useLocation } from 'react-router-dom';
 import Navi from './components/Navi';
 import styled from 'styled-components';
+import Home from './pages/Home';
+import IconNavi from './components/IconNavi';
 
 export const App = () => {
+
+    const location = useLocation();
+    console.log(location.pathname)
 
     useEffect(() => {
 
         registerMicroApps([
             {
                 name: 'todo',
-                entry: '//localhost:3001',
+                entry: '//localhost:3003',
                 container: '#container',
                 activeRule: '/todo-app',
             },
@@ -25,13 +30,15 @@ export const App = () => {
         start();
     }, [])
 
-    return <BrowserRouter>
+    return <div style={{display: 'flex'}}>
         {/* <Link to='/'>Home</Link> */}
         {/* <Link to='/todo-app'>Todo App</Link>
         <Link to='/onboard-app'>Onboard App</Link> */}
-        <Navi></Navi>
-        <Main id="container"></Main>
-    </BrowserRouter>
+        <IconNavi></IconNavi>
+        {
+            location.pathname === '/' ? <Home /> : <Main id="container"></Main>
+        }
+    </div>
 }
 
 const Main = styled.div`

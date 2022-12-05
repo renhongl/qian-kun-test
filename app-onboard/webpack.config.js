@@ -10,12 +10,18 @@ module.exports = {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
                 use: 'ts-loader'
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js']
     },
+    devtool: 'source-map',
     output: {
         library: `${packageName}-[name]`,
         libraryTarget: 'umd',

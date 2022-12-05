@@ -47,7 +47,6 @@ const Logo = styled.div`
     border-bottom: 1px solid #fff;
 `
 
-
 const NaviContainer = styled.div`
     background: gray;
     display: inline-block;

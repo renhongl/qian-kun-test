@@ -1,12 +1,22 @@
 import { useCallback, useEffect, useReducer } from "react";
 import { TodoItem } from "../models/todo";
 
-const initialState: TodoItem[] = [];
+type State = TodoItem[];
+type Action = { type: 'LOAD', payload: State } | { type: 'TOGGLE', payload: number }
 
-const reducer = (state: any, action: any) => {
+const initialState: State = [];
+
+const reducer = (state: State, action: Action): State => {
     switch (action.type) {
         case 'LOAD':
             return action.payload;
+        case 'TOGGLE':
+            const newState = [...state];
+            const item = newState.find(item => item.id === action.payload);
+            if (item) {
+                item.completed = !item.completed;
+            }
+            return newState;
         default:
             return [...state]
     }
@@ -42,6 +52,20 @@ export const useTodo = () => {
         }).then(load)
     }, [])
 
+    const toggleTodo = useCallback((id: number) => {
+        const item = state.find(item => item.id === id);
+        dispatch({ type: 'TOGGLE', payload: id });
+        fetch('http://localhost:5000/todos/' + id, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'Application/json'
+            },
+            body: JSON.stringify({
+                completed: !item.completed
+            })
+        })
+    }, [state])
+
     useEffect(() => {
         load();
     }, [])
@@ -50,7 +74,8 @@ export const useTodo = () => {
         state,
         load,
         addTodo,
-        deleteTodo
+        deleteTodo,
+        toggleTodo
     }
 }
 
