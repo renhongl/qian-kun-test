@@ -1,32 +1,24 @@
-import { useEffect, useState } from "react";
+import { useHttp } from './../utils/http';
 import { useMutation, useQuery } from "react-query";
 import { User } from "../models/user";
 
-
-function getUsers() {
-    return fetch('http://localhost:5000/users').then(res => res.json())
-}
-
-function createUser(user: Partial<User>) {
-    return fetch('http://localhost:5000/users', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(user)
-    })
-}
-
 export const useCreateUser = () => {
+    const http = useHttp();
     const mutation = useMutation({
-        mutationFn: createUser
+        mutationKey: 'create user',
+        mutationFn: (user: Partial<User>) => http<User>('users', { method: 'POST', data: user })
     });
 
     return mutation;
 }
 
 export const useLoadUser = () => {
-    const { isLoading, data } = useQuery<User[]>('users', getUsers);
+    const http = useHttp();
+    const { isLoading, data } = useQuery({
+        queryKey: 'load users',
+        queryFn: () => http<User[]>('users'),
+        refetchOnWindowFocus: false,
+    });
 
     return {
         users: data || [],

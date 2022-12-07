@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 export default function SubMenu() {
     return (
         <Paper sx={{ width: '260px', maxWidth: 'calc(100vw - 200px)' }}>
-            <ListItemText>Management Applications</ListItemText>
+            {/* <ListItemText>Management Applications</ListItemText> */}
             <MenuList>
                 <Link to='/'>
                     <MenuItem>
@@ -30,15 +30,7 @@ export default function SubMenu() {
                     <ListItemIcon>
                         <ContentCopy fontSize="small" />
                     </ListItemIcon>
-                    <ListItemText>Account</ListItemText>
-                </MenuItem>
-                </Link>
-                <Link to='/permission'>
-                <MenuItem>
-                    <ListItemIcon>
-                        <ContentPaste fontSize="small" />
-                    </ListItemIcon>
-                    <ListItemText>Permission</ListItemText>
+                    <ListItemText>About</ListItemText>
                 </MenuItem>
                 </Link>
                 <Divider />

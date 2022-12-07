@@ -1,22 +1,28 @@
 import React from 'react'
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import styled from 'styled-components'
-import Table from '../components/Table'
-import { useCreateUser, useLoadUser } from '../services/user';
+import UserTable from '../components/UserTable'
+import { User } from '../models/user';
+// import { useCreateUser, useLoadUser } from '../services/user';
+import { useHttp } from '../utils/http';
 
 export default function Home() {
+    const http = useHttp();
+    const queryClient = useQueryClient();
 
-    const { users, isLoading } = useLoadUser();
-    console.log(users);
-    const mutation = useCreateUser();
-    console.log(mutation.isLoading, mutation.data);
+    const { data: users, isLoading: loadIsLoading } = useQuery('load users', () => http<User[]>('users'))
+
+    const { mutate } = useMutation((user: Partial<User>) => http<User>('users', { method: 'POST', data: user }), {
+        onSuccess: () => queryClient.invalidateQueries(['load users'])
+    });
 
     return (
         <Container>
-            <Table users={users} isLoading={isLoading}></Table>
+            <UserTable users={users} isLoading={loadIsLoading}></UserTable>
             <div>
                 <input type="text" />
                 <button onClick={() => {
-                    mutation.mutate({
+                    mutate({
                         name: 'aaa'
                     })
                 }}>Create</button>

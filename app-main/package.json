@@ -12,6 +12,7 @@
     "license": "ISC",
     "devDependencies": {
         "@types/node": "^18.11.9",
+        "@types/qs": "^6.9.7",
         "@types/react": "^18.0.25",
         "@types/react-dom": "^18.0.9",
         "@types/styled-components": "^5.1.26",
@@ -30,6 +31,7 @@
         "@mui/material": "^5.10.16",
         "@mui/styled-engine-sc": "^5.10.16",
         "qiankun": "^2.8.4",
+        "qs": "^6.11.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-query": "^3.39.2",
