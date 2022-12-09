@@ -1,0 +1,58 @@
+{
+  "todos": [
+    {
+      "text": "aaa",
+      "completed": true,
+      "id": 1
+    },
+    {
+      "text": "test micro frontend",
+      "completed": false,
+      "id": 2
+    },
+    {
+      "text": "todo app",
+      "completed": true,
+      "id": 3
+    },
+    {
+      "text": "aaa bbb",
+      "completed": false,
+      "id": 4
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "leo",
+      "email": "liangrenhong2017@gmail.com",
+      "gender": "male",
+      "age": 18,
+      "group": "free"
+    },
+    {
+      "id": 2,
+      "name": "leo2",
+      "email": "liangrenhong2017@gmail.com",
+      "gender": "male",
+      "age": 18,
+      "group": "free"
+    },
+    {
+      "id": 3,
+      "name": "leo3",
+      "email": "liangrenhong2017@gmail.com",
+      "gender": "male",
+      "age": 18,
+      "group": "free"
+    }
+  ],
+  "auths": [
+    {
+      "id": 1,
+      "userName": "leo",
+      "password": "123456",
+      "token": "12312"
+    }
+  ]
+}

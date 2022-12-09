@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
         "outDir": "./public",
-        "baseUrl": "./src",
         "noImplicitAny": true,
         "allowSyntheticDefaultImports": true,
         "module": "es6",
