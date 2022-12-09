@@ -35,11 +35,11 @@ export default function BasicTable({ users, isLoading }: { users: User[], isLoad
                 <TableBody>
                     {users.map((user) => (
                         <TableRow
-                            key={user.id}
+                            key={user._id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
-                                {user.id}
+                                {user._id}
                             </TableCell>
                             <TableCell align="right">{user.name}</TableCell>
                             <TableCell align="right">{user.age}</TableCell>

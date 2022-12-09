@@ -25,11 +25,13 @@
         "webpack-dev-server": "^4.11.1"
     },
     "dependencies": {
+        "@apollo/client": "^3.7.2",
         "@emotion/react": "^11.10.5",
         "@emotion/styled": "^11.10.5",
         "@mui/icons-material": "^5.10.16",
         "@mui/material": "^5.10.16",
         "@mui/styled-engine-sc": "^5.10.16",
+        "graphql": "^16.6.0",
         "qiankun": "^2.8.4",
         "qs": "^6.11.0",
         "react": "^18.2.0",
